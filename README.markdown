@@ -1,6 +1,6 @@
-Spliceosome Analysis
-====================
-This code is used to analysis alternative splicing. 
+DNA Analysis
+============
+This code is used to analyse DNA sequences using BioJava and Clojure. 
 
 Setup
 -----
