@@ -3,11 +3,8 @@
 ;; Uses BioJava to parse the protein sequence and print out some of the symbols
 (ns my-test)
 (import '(java.io FileReader BufferedReader))
-(import '(org.biojava.bio.search SeqContentPattern MaxMismatchPattern))
+(import '(org.biojava.bio.search MaxMismatchPattern))
 (import '(org.biojava.bio.seq DNATools))
-(import '(org.biojava.bio.seq.io SeqIOTools))
-(import '(org.biojava.bio.seq.db SequenceDB))
-(import '(org.biojava.bio.symbol AlphabetManager))
 (import '(org.biojavax.bio.seq RichSequence$IOTools))
 
 ;; Read in the DNA file using a Fasta parser
