@@ -54,7 +54,6 @@ _NOTE_: In the interests of space, the files installed here are not (and should 
 [biojava]: http://biojava.org/
 [biojava 1.6]: http://www.biojava.org/download/bj16/bin/biojava.jar
 [bytecode]: http://www.biojava.org/download/bj16/support-jars/bytecode.jar
-[biojava 1.6]: http://www.biojava.org/download/bj16/all/biojava-1.6.1-all.jar
 
 Simple BioJava Test
 -------------------
