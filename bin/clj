@@ -1,5 +1,6 @@
 #!/bin/bash
 # FIXME: Currently, this script will only work if run from the project root.
+JAVA=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home/bin/java 
 JAR_DIR=vendor
 CLOJURE=$JAR_DIR/clojure.jar
 BIOJAVA=$JAR_DIR/biojava.jar
@@ -7,9 +8,9 @@ BYTECODE=$JAR_DIR/bytecode.jar
 JLINE=$JAR_DIR/jline.jar
 CP=$CLOJURE:$JLINE:$BIOJAVA:$BYTECODE
 if [ -z "$1" ]; then 
-	java -server -cp $CP \
+	$JAVA -server -cp $CP \
 	    jline.ConsoleRunner clojure.lang.Repl    
 else
 	scriptname=$1
-	java -server -cp $CP clojure.lang.Script $scriptname -- $*
+	$JAVA -server -cp $CP clojure.lang.Script $scriptname -- $*
 fi
