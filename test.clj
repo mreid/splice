@@ -14,18 +14,29 @@
 (def input (BufferedReader. (FileReader. "data/dm4p1/dm4p1.dEID")))
 (def data (RichSequence$IOTools/readFastaDNA input nil))
 
-(doseq [d (repeatedly #(.nextRichSequence data))] (prn 'Sequence (show d)))
-
-;; Grab the first sequence and print it out
-;;(def dseq (.nextRichSequence data))
-;;(prn 'Sequence (show dseq))
+;; Creates a lazy sequence for iterating through the FASTA data
+(defn bio-iterator-seq [iterator]
+	(lazy-seq
+		(when (.hasNext iterator) 
+			(cons (.nextSequence iterator) (bio-iterator-seq iterator)))))
 
 ;; Set up a pattern "agnct" ("n" = "ambigous"match anything") to find
-;;(def pattern (MaxMismatchPattern. (DNATools/createDNA "agnct") 0))
-;;(def matcher (.matcher pattern dseq))
-;;(prn 'Pattern (show (.getPattern pattern)))
+(def pattern (MaxMismatchPattern. (DNATools/createDNA "agnct") 0))
 
-;; Get the first match and print it out
-;;(. matcher find)
-;;(def match (.group matcher))
-;;(prn 'Match (show match))
+;; Extracts the value of the gene field from the seqence description
+(defn gene [dseq] 
+	(second (re-find #"gene=\"(\w+)\"" (.getDescription dseq))))
+
+;; For a single sequence, show the match against the pattern and its gene
+(defn domatch [dseq]
+	(let [matcher (.matcher pattern dseq)]
+		(do
+			(.find matcher)
+			(println "Match" (show (.group matcher)) "on Gene" (gene dseq))
+		)
+	)
+)
+
+; Apply the function to the FASTA data
+(prn 'Pattern (show (.getPattern pattern)))
+(doseq [d (bio-iterator-seq data)] (domatch d))
