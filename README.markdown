@@ -12,6 +12,15 @@ We assume that you are running Mac OS X Leopard, that downloads go to `~/Downloa
 
 _NOTE_: In the interests of space, the files installed here are not (and should not) be checked into the source control repository. If you need to set up a new local copy of this project you will have to manually download and set up these files.
 
+### [Clojure][] ###
+
+1. Follow [these instructions][setup] for setting up Clojure for Mac OS X Leopard.
+
+2. Use the following command to add the extra jars to Clojure's classpath:    
+`$ echo "vendor/biojava.jar:vendor/bytecode.jar" > .clojure`
+
+[setup]: http://mark.reid.name/sap/setting-up-clojure.html
+
 ### [_D. melanogaster_ (4.1) EID data][eid] ###
 
 1. Download [dm4p1.EID.tar.gz][dm4p1].
@@ -21,26 +30,6 @@ _NOTE_: In the interests of space, the files installed here are not (and should 
 
 [dm4p1]: http://mco321125.meduohio.edu/EID/dm4p1.EID.tar.gz
 [eid]: http://hsc.utoledo.edu/bioinfo/eid/
-
-### [Clojure][] ###
-
-1. Download [clojure 20081217][].
-
-2. Copy `clojure.jar` to the `vendor` directory:    
-`$ cp ~/Downloads/clojure/clojure.jar vendor`
-
-[clojure]: http://clojure.org/
-[clojure 20081217]: http://clojure.googlecode.com/files/clojure_20081217.zip
-
-### [JLine][] ###
-
-1. Download [jline-0.9.94.zip][].
-
-2. Copy to the `vendor` directory:    
-`$ cp ~/Downloads/jline-0.9.94/jline-0.9.94.jar vendor/jline.jar`
-
-[jline]: http://jline.sourceforge.net/
-[jline-0.9.94.zip]: http://downloads.sourceforge.net/jline/jline-0.9.94.zip
 
 ### [BioJava][] ###
 
@@ -61,7 +50,7 @@ There is a simple test file `test.clj`, written in Clojure, that reads in the st
 
 Once everything is set up correctly, the test can be run from the project directory (the one containing this file) by:   
     
-    $ bin/clj test.clj
+    $ clj test.clj
 
 The following output should be observed:    
     
